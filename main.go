@@ -1,5 +1,13 @@
 package main
 
+import (
+	"gopl/chapter1"
+	"log"
+	"net/http"
+)
+
 func main() {
-	println("go programming language study")
+	http.HandleFunc("/gif", chapter1.GifHandler)
+
+	log.Fatal(http.ListenAndServe("localhost:8080", nil))
 }
