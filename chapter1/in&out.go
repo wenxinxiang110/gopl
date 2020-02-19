@@ -59,4 +59,8 @@ func Output() {
 
 	//%%          字面上的百分号标志（无操作数）
 
+	o := 0666
+	fmt.Printf("%d %[1]o %#[1]o\n", o) // "438 666 0666"
+	x := int64(0xdeadbeef)
+	fmt.Printf("%d %[1]x %#[1]x %#[1]X\n", x)
 }

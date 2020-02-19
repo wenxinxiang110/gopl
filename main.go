@@ -1,13 +1,17 @@
 package main
 
 import (
-	"gopl/chapter1"
-	"log"
-	"net/http"
+	"gopl/chapter3"
 )
 
 func main() {
-	http.HandleFunc("/gif", chapter1.GifHandler)
 
-	log.Fatal(http.ListenAndServe("localhost:8080", nil))
+	chapter3.TestConst()
+
+	//http.HandleFunc("/gif", chapter1.GifHandler)
+	//
+	//http.HandleFunc("/corner", chapter3.CornerHandler)
+	//http.HandleFunc("/complex", chapter3.ComplexHandler)
+	//
+	//log.Fatal(http.ListenAndServe("localhost:8080", nil))
 }
