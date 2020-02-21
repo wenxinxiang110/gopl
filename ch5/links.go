@@ -1,11 +1,6 @@
 package ch5
 
-import (
-	"fmt"
-	"golang.org/x/net/html"
-	"net/http"
-)
-
+/*
 func Extract(url string) ([]string, error) {
 	resp, err := http.Get(url)
 	if err != nil {
@@ -43,3 +38,4 @@ func Extract(url string) ([]string, error) {
 	forEachNode(doc, visitNode, nil)
 	return links, nil
 }
+*/

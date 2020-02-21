@@ -1,17 +1,32 @@
 package main
 
 import (
-	"errors"
+	"bufio"
+	"bytes"
 	"gopl/ch1"
 	"gopl/ch3"
 	"gopl/ch4"
+	"gopl/ch5"
 	"log"
 	"net/http"
 	"os"
 )
 
 func main() {
-	CH4()
+
+	params := make([]string, 0)
+
+	in := bufio.NewScanner(os.Stdin)
+
+	for in.Scan() {
+
+		params = append(params, in.Text())
+	}
+	//fmt.Println(params)
+
+	//Chapter4()
+
+	Chapter5(params[0])
 
 	//Server()
 
@@ -30,11 +45,13 @@ func Server() {
 	log.Fatal(http.ListenAndServe("localhost:8080", nil))
 }
 
-func CH4() {
-	var result *ch4.IssuesSearchRes
-	var err = errors.New("init")
-	for err != nil {
-		result, err = ch4.SearchIssues(ch4.IssuesParam)
+func Chapter4() {
+
+	// 是否获取成功
+	var sucFlag bool
+
+	for !sucFlag {
+		result, err := ch4.SearchIssues(ch4.IssuesParam)
 		if err != nil {
 			log.Printf("failed:%v", err)
 			continue
@@ -43,17 +60,23 @@ func CH4() {
 		ch4.PrintIssues(result, os.Stdout)
 
 		// 写入文件
-		WriteIssuesIntoFile(result)
+		file, e := os.OpenFile("issues.html", os.O_CREATE|os.O_WRONLY, os.ModeDir)
+		defer file.Close()
+		if e != nil {
+			log.Printf("failed to open file issues.html:%v", e)
+			return
+		}
+		ch4.PrintIssuesHtml(result, file)
+
 	}
 }
 
-func WriteIssuesIntoFile(is *ch4.IssuesSearchRes) {
-	file, e := os.OpenFile("issues.html", os.O_CREATE|os.O_WRONLY, os.ModeDir)
-	if e != nil {
-		log.Printf("failed to open file issues.html:%v", e)
-		return
-	}
-	ch4.PrintIssuesHtml(is, file)
-	file.Close()
+func Chapter5(url string) {
+
+	var buf bytes.Buffer
+
+	ch1.Fetch(url, &buf)
+
+	ch5.FindLinks(&buf)
 
 }
