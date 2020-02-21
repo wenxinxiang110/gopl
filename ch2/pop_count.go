@@ -1,4 +1,4 @@
-package chapter2
+package ch2
 
 var pc [256]byte
 

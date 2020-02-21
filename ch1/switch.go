@@ -1,4 +1,4 @@
-package chapter1
+package ch1
 
 // switch特别用法demo
 //不带操作对象（译注：switch不带操作对象时默认用true值代替，然后将每个case的表达式和true值进行比较）；

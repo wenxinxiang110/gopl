@@ -1,4 +1,4 @@
-package chapter3
+package ch3
 
 func Btoi(b bool) int {
 	if b {

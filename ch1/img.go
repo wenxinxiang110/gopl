@@ -1,6 +1,6 @@
 // 图像操作,如画gif图
 // https://docs.hacknode.org/gopl-zh/ch1/ch1-04.html
-package chapter1
+package ch1
 
 import (
 	"image"
