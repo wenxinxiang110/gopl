@@ -8,6 +8,7 @@ import (
 	"gopl/ch4"
 	"gopl/ch5"
 	"gopl/ch6"
+	"gopl/ch7"
 	"log"
 	"net/http"
 	"os"
@@ -29,13 +30,13 @@ func main() {
 	//Chapter4()
 
 	//Chapter5(params[0])
-	Chapter6()
+	//Chapter6()
 	//Server()
 
 	//for _, item := range ch5.TopoSort(ch5.Preeqs) {
 	//	fmt.Println(item)
 	//}
-
+	Chapter7()
 }
 
 func Server() {
@@ -58,6 +59,9 @@ func Chapter4() {
 			log.Printf("failed:%v", err)
 			continue
 		}
+
+		sucFlag = true
+
 		// 打印到控制台
 		ch4.PrintIssues(result, os.Stdout)
 
@@ -127,4 +131,24 @@ func Chapter6() {
 	s.SymmetricDifference(&y)
 	fmt.Println("x symmetric difference y:", s.String()) // "{1 42 144}"
 
+}
+
+func Chapter7() {
+
+	//time.Sleep(time.Second)
+	//ch7.PrintTracks(ch7.Tracks)
+
+	db := ch7.Database{Datas: map[string]ch7.Dollars{"shoes": 50, "socks": 5}}
+
+	// 自定义路由选择器 ,这段有点脱裤子放屁
+	//mux := http.NewServeMux()
+	//mux.Handle("/list", http.HandlerFunc(db.List))
+	//mux.Handle("/price", http.HandlerFunc(db.Price))
+	//
+	//log.Fatal(http.ListenAndServe("localhost:8000", mux))
+
+	// 等价于这段代码
+	//mux.HandleFunc("/list", db.List)
+	//mux.HandleFunc("price", db.Price)
+	log.Fatal(http.ListenAndServe("localhost:8000", db))
 }
