@@ -9,6 +9,7 @@ import (
 	"gopl/ch5"
 	"gopl/ch6"
 	"gopl/ch7"
+	"gopl/ch8"
 	"log"
 	"net/http"
 	"os"
@@ -36,7 +37,8 @@ func main() {
 	//for _, item := range ch5.TopoSort(ch5.Preeqs) {
 	//	fmt.Println(item)
 	//}
-	Chapter7()
+	//Chapter7()
+	Chapter8()
 }
 
 func Server() {
@@ -151,4 +153,11 @@ func Chapter7() {
 	//mux.HandleFunc("/list", db.List)
 	//mux.HandleFunc("price", db.Price)
 	log.Fatal(http.ListenAndServe("localhost:8000", db))
+}
+
+func Chapter8() {
+
+	//ch8.ClockServerAndClient()
+	//ch8.Cal()
+	ch8.PipDemo()
 }
