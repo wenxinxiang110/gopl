@@ -10,6 +10,7 @@ import (
 	"gopl/ch6"
 	"gopl/ch7"
 	"gopl/ch8"
+	"gopl/ch9"
 	"log"
 	"net/http"
 	"os"
@@ -38,7 +39,8 @@ func main() {
 	//	fmt.Println(item)
 	//}
 	//Chapter7()
-	Chapter8()
+	//Chapter8()
+	Chapter9()
 }
 
 func Server() {
@@ -160,4 +162,8 @@ func Chapter8() {
 	//ch8.ClockServerAndClient()
 	//ch8.Cal()
 	ch8.PipDemo()
+}
+
+func Chapter9() {
+	ch9.Cal()
 }
