@@ -46,42 +46,11 @@ func main() {
 	}
 }
 
-/*
-func handleConn(conn net.Conn) {
-
-	ch := make(chan string)
-	defer func() {
-		// 释放资源
-		conn.Close()
-		//close(ch)
-	}()
-
-	go clientWriter(conn, ch)
-
-	who := conn.RemoteAddr().String()
-	// 显示一下自己的地址
-	ch <- "I'm " + who
-
-	// 通知一下，我来了
-	messages<-who +" has arrived"
-	entering <- ch
-
-	in := bufio.NewScanner(conn)
-	for in.Scan() {
-		messages <- who + " : " + in.Text()
-	}
-
-	leaving <- ch
-
-	// 通知一下，我退出了
-	messages <- who + " is leaving"
-}
-*/
-
 func handleConn(c net.Conn) {
-
 	// outgoing client messages
+
 	ch := make(chan string)
+
 	go clientWriter(c, ch)
 
 	// 客户端地址
@@ -131,30 +100,7 @@ func broadcaster() {
 
 		case cli := <-leaving:
 			delete(online, cli)
-			close(cli)
+			//close(cli)
 		}
 	}
 }
-
-/*func broadcaster() {
-	// all connected clients
-	clients := make(map[client]bool)
-
-	for {
-		select {
-		case msg := <-messages:
-			// 有消息则把消息推送到每一个客户端
-			for cli := range clients {
-				cli <- msg
-			}
-		case cli := <-entering:
-			// 有客户端进入
-			clients[cli] = true
-		case cli := <-leaving:
-			// 有客户端离开
-			delete(clients, cli)
-		}
-	}
-
-}
-*/
