@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"gopl/ch1"
+	"gopl/ch12"
 	"gopl/ch3"
 	"gopl/ch4"
 	"gopl/ch5"
@@ -40,7 +41,8 @@ func main() {
 	//}
 	//Chapter7()
 	//Chapter8()
-	Chapter9()
+	//Chapter9()
+	Chapter12()
 }
 
 func Server() {
@@ -166,4 +168,8 @@ func Chapter8() {
 
 func Chapter9() {
 	ch9.Cal()
+}
+
+func Chapter12() {
+	ch12.Type()
 }
