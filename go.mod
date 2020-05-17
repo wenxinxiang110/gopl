@@ -1,4 +1,4 @@
-module gopl
+module github.com/NothingXiang/gopl
 
 go 1.13
 
