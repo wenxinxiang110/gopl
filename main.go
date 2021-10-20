@@ -3,6 +3,10 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"log"
+	"net/http"
+	"os"
+
 	"gopl/ch1"
 	"gopl/ch12"
 	"gopl/ch3"
@@ -12,13 +16,10 @@ import (
 	"gopl/ch7"
 	"gopl/ch8"
 	"gopl/ch9"
-	"log"
-	"net/http"
-	"os"
 )
 
 func main() {
-
+	chapter1()
 	// 读取输入到params这个slice中
 	//params := make([]string, 0)
 	//
@@ -42,7 +43,7 @@ func main() {
 	//Chapter7()
 	//Chapter8()
 	//Chapter9()
-	Chapter12()
+	//Chapter12()
 }
 
 func Server() {
@@ -52,6 +53,12 @@ func Server() {
 	http.HandleFunc("/complex", ch3.ComplexHandler)
 
 	log.Fatal(http.ListenAndServe("localhost:8080", nil))
+}
+
+func chapter1() {
+	if err := ch1.EchoOSArgs(os.Stdout, "\n"); err != nil {
+		panic(err)
+	}
 }
 
 func Chapter4() {
