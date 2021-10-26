@@ -21,3 +21,12 @@ func PopCount(x uint64) int {
 		pc[byte(x>>(6*8))] +
 		pc[byte(x>>(7*8))])
 }
+
+func PopCountIter(x uint64) int {
+	count := 0
+	for x != 0 {
+		count += int(x % 2)
+		x >>= 1
+	}
+	return count
+}

@@ -20,6 +20,7 @@ import (
 
 func main() {
 	chapter1()
+	Server()
 	// 读取输入到params这个slice中
 	//params := make([]string, 0)
 	//

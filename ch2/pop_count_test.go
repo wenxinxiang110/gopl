@@ -1,7 +1,11 @@
 package ch2
 
-import "testing"
+import (
+	"math"
+	"testing"
+)
 
+/*
 func TestPopCount(t *testing.T) {
 
 	tests := []struct {
@@ -46,5 +50,17 @@ func TestPopCount(t *testing.T) {
 				t.Errorf("PopCount() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+*/
+func BenchmarkPopCount(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCount(math.MaxInt64)
+	}
+}
+
+func BenchmarkPopCountIter(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCountIter(math.MaxInt64)
 	}
 }

@@ -27,7 +27,7 @@ func DupUtil(out io.Writer) {
 			panic(fmt.Sprintf("Open file %s error:%v", path, err))
 		}
 		_, _ = out.Write([]byte(path + "\n"))
-		_ = Dup(file, out, DupOptions{})
+		_ = Dup(file, out, DupOptions{args})
 		_ = file.Close()
 	}
 

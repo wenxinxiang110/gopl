@@ -19,7 +19,7 @@ const (
 	blackIndex = 1
 )
 
-//利萨如图形(Lissajous figures)
+// Lissajous 利萨如图形(Lissajous figures)
 func Lissajous(out io.Writer) {
 	const (
 		cycles  = 5     // number of complete x oscillator revolutions
